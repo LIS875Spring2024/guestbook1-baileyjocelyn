@@ -13,8 +13,8 @@ def view_guestbook():
     else:
         print("Guestbook Entries")
         for name, messages in guestbook_entries.items():
-            print("Name: {name}")
-            print("Messages:")
+            print(f"Name: {name}")
+            print("Message:")
             for message in messages:
                 print(f"- {message}")
             print()
@@ -42,5 +42,7 @@ def main():
             print("Thank you. Goobye.")
             break
         
-    else:
-        print("Invalid choice. Please try again")
+        else:
+            print("Invalid choice. Please try again")
+if __name__ == "__main__":
+    main()
