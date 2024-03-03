@@ -1,3 +1,14 @@
+import turtle
+
+#Set Scree Size for Turtle
+screen = turtle.Screen()
+screen.setup(width=800, height=600)
+screen.title("Guestbook Turtle")
+
+#Using t to sub for typing turtle 
+t = turtle.Turtle()
+t.speed (1)
+
 guestbook_entries ={}
 
 def write_to_guestbook(name,message):
@@ -11,13 +22,23 @@ def view_guestbook():
     if not guestbook_entries:
         print("Guestbook is empty.")
     else:
-        print("Guestbook Entries")
+        t.penup()
+        t.goto(-300,200)
+        t.pendown()
+        t.write("Guestbook Entries", font=("Edwardian Script", 16))
+        t.penup()
+        t.goto(-300, 180)
+        t.pendown()
         for name, messages in guestbook_entries.items():
-            print(f"Name: {name}")
-            print("Message:")
+            t.penup()
+            t.goto(-300, t.ycor() - 20)
+            t.pendown()
+            t.write(f"Name: {name},", font=("Arial", 12))
             for message in messages:
-                print(f"- {message}")
-            print()
+                t.penup()
+                t.goto(-280,t.ycor() - 20)
+                t.pendown()
+                t.write(f" - {message}", font=("Arial", 10))
 
 def main():
     print("Welcome to our Guestbook")
@@ -37,6 +58,7 @@ def main():
 
         elif choice =='2':
             view_guestbook()
+            screen.mainloop()
 
         elif choice =='3':
             print("Thank you. Goobye.")
@@ -44,5 +66,7 @@ def main():
         
         else:
             print("Invalid choice. Please try again")
+
+    screen.mainloop()
 if __name__ == "__main__":
     main()
