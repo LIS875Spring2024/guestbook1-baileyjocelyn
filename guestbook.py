@@ -82,23 +82,18 @@ def main():
     screen.update()
     t.penup()
     t.goto(-200,200)
-    t.write("Guestbook Entries", font=("Edwardian Script", 16))
+    t.write("Guestbook Entries", font=("Brush Script MT", 30))
     t.goto(-300,180)
     screen.update()
 
     while True:
         try:
-            print("What would you like to do?", flush=True)
-            print("1: Sign the Guestbook", flush=True)
-            print("2. View the Guestbook", flush=True)
-            print("3. Exit the Guestbook", flush=True)
-
-            choice =input("Enter your selection: ")
+            choice = turtle.textinput("Guestbook", "What would you like to do?\n1: Sign the Guestbook\n2: View the Guestbook\n3: Exit")
 
             if choice =='1':
-                name = input("Name:")
-                message = input("Message:")
-                write_to_guestbook(name,message)
+                name = turtle.textinput("Guestbook Entry", "Name:")
+                message = turtle.textinput("Guestbook Entry", "Message:")
+                write_to_guestbook(name, message)
                 print("Thank you for signing the Guestbook!", flush=True)
                 screen.update()
 
