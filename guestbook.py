@@ -1,6 +1,6 @@
 import turtle
 
-#Set Scree Size for Turtle
+#Set Screen and Screen Size for Turtle
 screen = turtle.Screen()
 screen.setup(width=800, height=600)
 screen.title("Guestbook")
@@ -30,7 +30,7 @@ def view_guestbook():
         t.penup()
         t.goto(-300,200)
         t.pendown()
-        t.write("Guestbook Entries", font=("Edwardian Script", 30))
+        t.write("Guestbook", font=("Brush Script MT", 30))
         t.penup()
         t.goto(-300, 180)
         t.pendown()
@@ -46,6 +46,7 @@ def view_guestbook():
                 t.write(f" - {message}", font=("Arial", 10))
     screen.update()
 
+#For the Spade drawing from previous assignment, but had to add t. 
 def spade():
     t.fillcolor("black")
     t.setheading(0)
@@ -74,6 +75,7 @@ def spade():
     t.back(25)
     t.setheading(0)
 
+#Before user enters their choice
 def main():
     print("Welcome to our Guestbook")
     t.penup()
@@ -83,10 +85,11 @@ def main():
     screen.update()
     t.penup()
     t.goto(-200,200)
-    t.write("Guestbook Entries", font=("Brush Script MT", 30))
+    t.write("Guestbook", font=("Brush Script MT", 30))
     t.goto(-300,180)
     screen.update()
 
+#User has to enter their selection. Had use lots for forums, Reddit, etc. to figure our that I needed to do turtle.textinput to get a prompt for the users. This took the majority of our time.
     while True:
         try:
             choice = turtle.textinput("Guestbook", "What would you like to do?\n1: Sign the Guestbook\n2: View the Guestbook\n3: Exit")
@@ -108,6 +111,8 @@ def main():
         
             else:
                 print("Invalid choice. Please try again", flush=True)
+
+#Had to add this is because I couldnt figure out why Python application was "not responding" at first.     
         except Exception as e:
             print(f"An error occurred: {str(e)}")
     
