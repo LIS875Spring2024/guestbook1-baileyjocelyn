@@ -19,8 +19,12 @@ def write_to_guestbook(name,message):
         guestbook_entries[name].append(message)
 
 def view_guestbook():
+    t.clear()
     if not guestbook_entries:
-        print("Guestbook is empty.")
+        t.penup()
+        t.goto(-200, 0)
+        t.pendown()
+        t.write("Guestbook is empty.", font=("Arial", 16))
     else:
         t.penup()
         t.goto(-300,200)
@@ -39,16 +43,54 @@ def view_guestbook():
                 t.goto(-280,t.ycor() - 20)
                 t.pendown()
                 t.write(f" - {message}", font=("Arial", 10))
+    turtle.update()
+
+def spade():
+    t.fillcolor("black")
+    t.setheading(0)
+    t.begin_fill()
+    t.forward(15)
+    t.left(120)
+    t.forward(30)
+    t.left(120)
+    t.forward(30)
+    t.left(120)
+    t.forward(15)
+    t.end_fill()
+
+    t.setheading(90)
+    t.forward(25)
+    t.left(180)
+    t.left(45)
+    t.begin_fill()
+    t.circle(18,180)
+    t.forward(36)
+    t.left(90)
+    t.forward(36)
+    t.circle(18, 180)
+    t.end_fill()
+    t.left(45)
+    t.back(25)
+    t.setheading(0)
 
 def main():
     print("Welcome to our Guestbook")
+    t.penup()
+    t.goto(-300,220)
+    t.pendown()
+    spade()
+    t.penup()
+    t.goto(-200,200)
+    t.write("Guestbook Entries", font=("Edwardian Script", 16))
+    t.goto(-300,180)
+
     while True:
         print("What would you like to do?")
         print("1: Sign the Guestbook")
         print("2. View the Guestbook")
         print("3. Exit the Guestbook")
 
-        choice =input("Enter your selection")
+        choice =input("Enter your selection: ")
 
         if choice =='1':
             name = input("Name:")
@@ -58,7 +100,6 @@ def main():
 
         elif choice =='2':
             view_guestbook()
-            screen.mainloop()
 
         elif choice =='3':
             print("Thank you. Goobye.")
@@ -67,6 +108,9 @@ def main():
         else:
             print("Invalid choice. Please try again")
 
-    screen.mainloop()
+    turtle.mainloop()
+
+
+
 if __name__ == "__main__":
     main()
