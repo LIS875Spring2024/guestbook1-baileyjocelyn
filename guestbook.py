@@ -43,7 +43,7 @@ def view_guestbook():
                 t.goto(-280,t.ycor() - 20)
                 t.pendown()
                 t.write(f" - {message}", font=("Arial", 10))
-    turtle.update()
+    screen.update()
 
 def spade():
     t.fillcolor("black")
@@ -79,38 +79,43 @@ def main():
     t.goto(-300,220)
     t.pendown()
     spade()
+    screen.update()
     t.penup()
     t.goto(-200,200)
     t.write("Guestbook Entries", font=("Edwardian Script", 16))
     t.goto(-300,180)
+    screen.update()
 
     while True:
-        print("What would you like to do?")
-        print("1: Sign the Guestbook")
-        print("2. View the Guestbook")
-        print("3. Exit the Guestbook")
+        try:
+            print("What would you like to do?", flush=True)
+            print("1: Sign the Guestbook", flush=True)
+            print("2. View the Guestbook", flush=True)
+            print("3. Exit the Guestbook", flush=True)
 
-        choice =input("Enter your selection: ")
+            choice =input("Enter your selection: ")
 
-        if choice =='1':
-            name = input("Name:")
-            message = input("Message:")
-            write_to_guestbook(name,message)
-            print("Thank you for signing the Guestbook!")
+            if choice =='1':
+                name = input("Name:")
+                message = input("Message:")
+                write_to_guestbook(name,message)
+                print("Thank you for signing the Guestbook!", flush=True)
+                screen.update()
 
-        elif choice =='2':
-            view_guestbook()
+            elif choice =='2':
+                view_guestbook()
+                screen.update()
 
-        elif choice =='3':
-            print("Thank you. Goobye.")
-            break
+            elif choice =='3':
+                print("Thank you. Goobye.", flush=True)
+                break
         
-        else:
-            print("Invalid choice. Please try again")
-
+            else:
+                print("Invalid choice. Please try again", flush=True)
+        except Exception as e:
+            print(f"An error occurred: {str(e)}")
+    
     turtle.mainloop()
-
-
 
 if __name__ == "__main__":
     main()
