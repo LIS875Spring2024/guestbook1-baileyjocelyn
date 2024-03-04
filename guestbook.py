@@ -3,7 +3,8 @@ import turtle
 #Set Scree Size for Turtle
 screen = turtle.Screen()
 screen.setup(width=800, height=600)
-screen.title("Guestbook Turtle")
+screen.title("Guestbook")
+screen.bgcolor("light blue")
 
 #Using t to sub for typing turtle 
 t = turtle.Turtle()
@@ -29,7 +30,7 @@ def view_guestbook():
         t.penup()
         t.goto(-300,200)
         t.pendown()
-        t.write("Guestbook Entries", font=("Edwardian Script", 16))
+        t.write("Guestbook Entries", font=("Edwardian Script", 30))
         t.penup()
         t.goto(-300, 180)
         t.pendown()
